@@ -10,9 +10,17 @@
 #import "NSDate+String.h"
 #import "DateManager.h"
 
+@interface SMCDayView () {
+    NSDate* _date;
+}
+- (IBAction)onDayViewClicked:(UIButton *)sender;
+
+@end
+
 @implementation SMCDayView
 
 - (void)reloadDate:(NSDate*)date  currentDate:(NSDate*)cDate {
+    _date = date;
     self.labelTitle.text = [date hy_stringDay];
     
     BOOL isInSameMonth = [[DateManager sharedInstance] isDate:date inSameMonthWithDate:cDate];
@@ -43,4 +51,7 @@
     return self;
 }
 
+- (IBAction)onDayViewClicked:(UIButton *)sender {
+    NSLog(@"select date = %@", [_date hy_stringDefault]);
+}
 @end
