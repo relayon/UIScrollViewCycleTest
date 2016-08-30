@@ -15,6 +15,17 @@
 		54EB8BCB1D73FB9E0007B657 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54EB8BC91D73FB9E0007B657 /* LaunchScreen.storyboard */; };
 		54EB8BD61D73FB9E0007B657 /* UIScrollViewCycleTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8BD51D73FB9E0007B657 /* UIScrollViewCycleTestTests.m */; };
 		54EB8BE11D73FB9E0007B657 /* UIScrollViewCycleTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8BE01D73FB9E0007B657 /* UIScrollViewCycleTestUITests.m */; };
+		54EB8BF01D7516E10007B657 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8BEF1D7516E10007B657 /* MainViewController.m */; };
+		54EB8BF31D7517BB0007B657 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8BF21D7517BB0007B657 /* CalendarViewController.m */; };
+		54EB8BF71D7519BA0007B657 /* SMCMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8BF61D7519BA0007B657 /* SMCMonthView.m */; };
+		54EB8BF91D7519D30007B657 /* SMCMonthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54EB8BF81D7519D30007B657 /* SMCMonthView.xib */; };
+		54EB8BFC1D751DF40007B657 /* SMCWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8BFB1D751DF40007B657 /* SMCWeekView.m */; };
+		54EB8BFE1D751E010007B657 /* SMCWeekView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54EB8BFD1D751E010007B657 /* SMCWeekView.xib */; };
+		54EB8C011D751E400007B657 /* SMCDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8C001D751E400007B657 /* SMCDayView.m */; };
+		54EB8C031D751E4B0007B657 /* SMCDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54EB8C021D751E4B0007B657 /* SMCDayView.xib */; };
+		54EB8C061D7522A70007B657 /* UIScrollView+SMCScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8C051D7522A70007B657 /* UIScrollView+SMCScroll.m */; };
+		54EB8C091D7525A00007B657 /* SMCCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8C081D7525A00007B657 /* SMCCalendarView.m */; };
+		54EB8C0B1D7527720007B657 /* SMCCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54EB8C0A1D7527720007B657 /* SMCCalendarView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +62,24 @@
 		54EB8BDC1D73FB9E0007B657 /* UIScrollViewCycleTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIScrollViewCycleTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54EB8BE01D73FB9E0007B657 /* UIScrollViewCycleTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIScrollViewCycleTestUITests.m; sourceTree = "<group>"; };
 		54EB8BE21D73FB9E0007B657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54EB8BEE1D7516E10007B657 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		54EB8BEF1D7516E10007B657 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		54EB8BF11D7517BB0007B657 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		54EB8BF21D7517BB0007B657 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		54EB8BF51D7519BA0007B657 /* SMCMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCMonthView.h; sourceTree = "<group>"; };
+		54EB8BF61D7519BA0007B657 /* SMCMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCMonthView.m; sourceTree = "<group>"; };
+		54EB8BF81D7519D30007B657 /* SMCMonthView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMCMonthView.xib; sourceTree = "<group>"; };
+		54EB8BFA1D751DF40007B657 /* SMCWeekView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCWeekView.h; sourceTree = "<group>"; };
+		54EB8BFB1D751DF40007B657 /* SMCWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCWeekView.m; sourceTree = "<group>"; };
+		54EB8BFD1D751E010007B657 /* SMCWeekView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMCWeekView.xib; sourceTree = "<group>"; };
+		54EB8BFF1D751E400007B657 /* SMCDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCDayView.h; sourceTree = "<group>"; };
+		54EB8C001D751E400007B657 /* SMCDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCDayView.m; sourceTree = "<group>"; };
+		54EB8C021D751E4B0007B657 /* SMCDayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMCDayView.xib; sourceTree = "<group>"; };
+		54EB8C041D7522A70007B657 /* UIScrollView+SMCScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SMCScroll.h"; sourceTree = "<group>"; };
+		54EB8C051D7522A70007B657 /* UIScrollView+SMCScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SMCScroll.m"; sourceTree = "<group>"; };
+		54EB8C071D7525A00007B657 /* SMCCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCCalendarView.h; sourceTree = "<group>"; };
+		54EB8C081D7525A00007B657 /* SMCCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCCalendarView.m; sourceTree = "<group>"; };
+		54EB8C0A1D7527720007B657 /* SMCCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMCCalendarView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +130,11 @@
 		54EB8BBA1D73FB9E0007B657 /* UIScrollViewCycleTest */ = {
 			isa = PBXGroup;
 			children = (
+				54EB8BF41D7519660007B657 /* Calendar */,
 				54EB8BBE1D73FB9E0007B657 /* AppDelegate.h */,
 				54EB8BBF1D73FB9E0007B657 /* AppDelegate.m */,
+				54EB8BF11D7517BB0007B657 /* CalendarViewController.h */,
+				54EB8BF21D7517BB0007B657 /* CalendarViewController.m */,
 				54EB8BC11D73FB9E0007B657 /* ViewController.h */,
 				54EB8BC21D73FB9E0007B657 /* ViewController.m */,
 				54EB8BC41D73FB9E0007B657 /* Main.storyboard */,
@@ -110,6 +142,8 @@
 				54EB8BC91D73FB9E0007B657 /* LaunchScreen.storyboard */,
 				54EB8BCC1D73FB9E0007B657 /* Info.plist */,
 				54EB8BBB1D73FB9E0007B657 /* Supporting Files */,
+				54EB8BEE1D7516E10007B657 /* MainViewController.h */,
+				54EB8BEF1D7516E10007B657 /* MainViewController.m */,
 			);
 			path = UIScrollViewCycleTest;
 			sourceTree = "<group>";
@@ -138,6 +172,27 @@
 				54EB8BE21D73FB9E0007B657 /* Info.plist */,
 			);
 			path = UIScrollViewCycleTestUITests;
+			sourceTree = "<group>";
+		};
+		54EB8BF41D7519660007B657 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				54EB8BF51D7519BA0007B657 /* SMCMonthView.h */,
+				54EB8BF61D7519BA0007B657 /* SMCMonthView.m */,
+				54EB8BF81D7519D30007B657 /* SMCMonthView.xib */,
+				54EB8BFA1D751DF40007B657 /* SMCWeekView.h */,
+				54EB8BFB1D751DF40007B657 /* SMCWeekView.m */,
+				54EB8BFD1D751E010007B657 /* SMCWeekView.xib */,
+				54EB8BFF1D751E400007B657 /* SMCDayView.h */,
+				54EB8C001D751E400007B657 /* SMCDayView.m */,
+				54EB8C021D751E4B0007B657 /* SMCDayView.xib */,
+				54EB8C041D7522A70007B657 /* UIScrollView+SMCScroll.h */,
+				54EB8C051D7522A70007B657 /* UIScrollView+SMCScroll.m */,
+				54EB8C071D7525A00007B657 /* SMCCalendarView.h */,
+				54EB8C081D7525A00007B657 /* SMCCalendarView.m */,
+				54EB8C0A1D7527720007B657 /* SMCCalendarView.xib */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,8 +299,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				54EB8BCB1D73FB9E0007B657 /* LaunchScreen.storyboard in Resources */,
+				54EB8C031D751E4B0007B657 /* SMCDayView.xib in Resources */,
+				54EB8BF91D7519D30007B657 /* SMCMonthView.xib in Resources */,
+				54EB8C0B1D7527720007B657 /* SMCCalendarView.xib in Resources */,
 				54EB8BC81D73FB9E0007B657 /* Assets.xcassets in Resources */,
 				54EB8BC61D73FB9E0007B657 /* Main.storyboard in Resources */,
+				54EB8BFE1D751E010007B657 /* SMCWeekView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,8 +330,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				54EB8BC31D73FB9E0007B657 /* ViewController.m in Sources */,
+				54EB8BFC1D751DF40007B657 /* SMCWeekView.m in Sources */,
+				54EB8BF71D7519BA0007B657 /* SMCMonthView.m in Sources */,
+				54EB8C011D751E400007B657 /* SMCDayView.m in Sources */,
 				54EB8BC01D73FB9E0007B657 /* AppDelegate.m in Sources */,
 				54EB8BBD1D73FB9E0007B657 /* main.m in Sources */,
+				54EB8C091D7525A00007B657 /* SMCCalendarView.m in Sources */,
+				54EB8BF31D7517BB0007B657 /* CalendarViewController.m in Sources */,
+				54EB8C061D7522A70007B657 /* UIScrollView+SMCScroll.m in Sources */,
+				54EB8BF01D7516E10007B657 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +564,7 @@
 				54EB8BE71D73FB9E0007B657 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		54EB8BE81D73FB9E0007B657 /* Build configuration list for PBXNativeTarget "UIScrollViewCycleTestTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +573,7 @@
 				54EB8BEA1D73FB9E0007B657 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		54EB8BEB1D73FB9E0007B657 /* Build configuration list for PBXNativeTarget "UIScrollViewCycleTestUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +582,7 @@
 				54EB8BED1D73FB9E0007B657 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

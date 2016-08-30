@@ -48,8 +48,8 @@
 #pragma mark -- layoutViews
 - (void)_layoutViews {
     //
-    CGFloat width = self.scrollView.frame.size.width;
-//    CGFloat width = self.view.frame.size.width;
+//    CGFloat width = self.scrollView.frame.size.width;
+    CGFloat width = self.view.frame.size.width;
     // left
     _left = [UILabel new];
     _left.backgroundColor = [UIColor blueColor];
