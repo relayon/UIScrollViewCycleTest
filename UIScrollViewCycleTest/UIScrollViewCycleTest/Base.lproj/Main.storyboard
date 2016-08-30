@@ -149,10 +149,29 @@
                     <view key="view" contentMode="scaleToFill" id="Mzw-n7-mD9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0SZ-jT-zdh">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2U9-um-1uf" id="030-yV-dMJ"/>
+                                    <outlet property="delegate" destination="2U9-um-1uf" id="yj1-1q-vmN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0SZ-jT-zdh" secondAttribute="trailing" id="Hrm-un-81S"/>
+                            <constraint firstItem="0SZ-jT-zdh" firstAttribute="leading" secondItem="Mzw-n7-mD9" secondAttribute="leading" id="Lv5-vA-qgB"/>
+                            <constraint firstItem="I7f-4V-PsZ" firstAttribute="top" secondItem="0SZ-jT-zdh" secondAttribute="bottom" id="b2N-XN-HjD"/>
+                            <constraint firstItem="0SZ-jT-zdh" firstAttribute="top" secondItem="aaV-iM-gnr" secondAttribute="bottom" id="tgK-vf-wZx"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="日历" id="EyC-eY-TvF"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="0SZ-jT-zdh" id="qLt-1o-Th1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jv3-u8-jum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

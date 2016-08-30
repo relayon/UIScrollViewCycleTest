@@ -12,11 +12,14 @@
 
 @optional
 - (void)didCalendarPageChange:(NSDate*)date;
+- (void)didCalendarHeightChange:(CGFloat)height;
 
 @end
 
 @interface SMCCalendarView : UIView
 
 @property (weak, nonatomic) id<SMCCalendarDelegate> delegate;
+
+- (void)changeCalendarHeight:(CGFloat)delta;
 
 @end

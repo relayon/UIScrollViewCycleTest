@@ -176,9 +176,9 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
     // velocity 是负数，方向向上，正数，方向向下
     NSLog(@"{%f, %f}", translation, velocity);
     
-    
+    CGFloat delta = 0.0f;
     if (_calendarMode == CalendarMode_Month) {
-        CGFloat delta = -translation;
+        delta = -translation;
         delta = MAX(delta, 0.0f); // 最小
         delta = MIN(delta, _monthHeight - _weekHeight);   // 最大
         CGFloat tHeight = _monthHeight - delta;
@@ -186,7 +186,7 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
         tFrame.size.height = tHeight;
         self.frame = tFrame;
     } else {
-        CGFloat delta = translation;
+        delta = translation;
         delta = MAX(delta, 0.0f); // 最小
         delta = MIN(delta, _monthHeight - _weekHeight);   // 最大
         CGFloat tHeight = _weekHeight + delta;
@@ -196,6 +196,9 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
     }
     
     [self _changeMonthViewHeight:self.frame.size.height];
+    if (self.delegate) {
+        [self.delegate didCalendarHeightChange:self.frame.size.height];
+    }
     
 //    CGFloat delta = -translation;
 //    delta = MAX(delta, 0.0f);   // 最小
@@ -253,6 +256,23 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
 //            self.frame = tFrame;
 //        }];
     }
+}
+
+- (void)changeCalendarHeight:(CGFloat)delta {
+    CGFloat nowHeight;
+    if (_calendarMode == CalendarMode_Month) {
+        nowHeight = _monthHeight;
+    } else {
+        nowHeight = _weekHeight;
+    }
+    
+    CGFloat tHeight = nowHeight + delta;
+    tHeight = MAX(tHeight, _weekHeight);
+    tHeight = MIN(tHeight, _monthHeight);
+    CGRect tFrame = self.frame;
+    tFrame.size.height = tHeight;
+    self.frame = tFrame;
+    [self _changeMonthViewHeight:self.frame.size.height];
 }
 
 #pragma mark -- layoutViews
