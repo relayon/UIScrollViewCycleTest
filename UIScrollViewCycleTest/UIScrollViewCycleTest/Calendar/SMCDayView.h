@@ -11,4 +11,6 @@
 @interface SMCDayView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 
+- (void)reloadDate:(NSDate*)date  currentDate:(NSDate*)cDate;
+
 @end

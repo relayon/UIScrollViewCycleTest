@@ -8,6 +8,7 @@
 
 #import "SMCWeekView.h"
 #import "SMCDayView.h"
+#import "DateManager.h"
 
 @interface SMCWeekView () {
     NSArray<SMCDayView*>* _days;
@@ -16,6 +17,14 @@
 @end
 
 @implementation SMCWeekView
+
+- (void)reloadDate:(NSDate*)date  currentDate:(NSDate*)cDate{
+    for (NSInteger i = 0; i < 7; i++) {
+        NSDate* tDate = [[DateManager sharedInstance] dateWithDate:date dayOffset:i];
+        SMCDayView* day = [_days objectAtIndex:i];
+        [day reloadDate:tDate currentDate:cDate];
+    }
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

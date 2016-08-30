@@ -12,4 +12,6 @@
 
 - (void)initDays;
 
+- (void)reloadDate:(NSDate*)date currentDate:(NSDate*)cDate;
+
 @end

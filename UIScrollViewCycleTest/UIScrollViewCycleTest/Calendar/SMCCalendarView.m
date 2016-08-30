@@ -9,6 +9,7 @@
 #import "SMCCalendarView.h"
 #import "SMCMonthView.h"
 #import "UIScrollView+SMCScroll.h"
+#import "DateManager.h"
 
 typedef NS_ENUM(NSInteger, CalendarMode) {
     CalendarMode_Month, // 月模式 - 默认
@@ -26,6 +27,9 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
     SMCMonthView* _left;
     SMCMonthView* _middle;
     SMCMonthView* _right;
+    
+    NSDate* _nowDate;
+    NSDate* _selectDate;
 }
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
@@ -46,15 +50,20 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
         
         UIScrollView* sv = [UIScrollView new];
         sv.showsHorizontalScrollIndicator = NO;
+        sv.backgroundColor = [UIColor blackColor];
+//        sv.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         sv.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         [self addSubview:sv];
         self.scrollView = sv;
         
         _maxCount = 10;
-        _currentIndex = 1;
+        _currentIndex = 0;
         _monthHeight = frame.size.height;
         _weekHeight = frame.size.width/7.0;
         _calendarMode = CalendarMode_Month;
+        
+        _nowDate = [NSDate date];
+        _selectDate = _nowDate;
         
 //        CGRect tFrame = self.bounds;
 //        self.scrollView.frame = tFrame;
@@ -66,6 +75,8 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
         
         self.backgroundColor = [UIColor purpleColor];
         [self _addGesture];
+        
+        [self _reloadData];
     }
     return self;
 }
@@ -75,9 +86,10 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
 //    tFrame.size.height = height;
 //    _middle.frame = tFrame;
     
-    [_middle changeHeight:height];
+    [_middle rawChangeHeight:height];
 }
 
+#if 0
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self _changeMonthViewHeight:self.frame.size.height];
@@ -85,6 +97,7 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
 //    NSLog(@"****   self = %@", NSStringFromCGRect(self.frame));
 //    NSLog(@"*scrollview = %@", NSStringFromCGRect(self.scrollView.frame));
 }
+#endif
 
 - (void)_addGesture {
     // 添加手势
@@ -115,7 +128,7 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
     CGSize sz = self.scrollView.contentSize;
     sz.width = width*3.0f;
     [self.scrollView setContentSize:sz];
-    [self.scrollView setContentOffset:CGPointMake(width, 8) animated:NO];
+    [self.scrollView setContentOffset:CGPointMake(width, 0) animated:NO];
 }
 
 - (void)_changeCalendarFrame:(CGFloat)delta {
@@ -182,7 +195,7 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
         self.frame = tFrame;
     }
     
-    
+    [self _changeMonthViewHeight:self.frame.size.height];
     
 //    CGFloat delta = -translation;
 //    delta = MAX(delta, 0.0f);   // 最小
@@ -214,21 +227,31 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
         CGRect tFrame = self.frame;
         tFrame.size.height = _monthHeight;
         _calendarMode = CalendarMode_Month;
-        [UIView animateWithDuration:3.0f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.frame = tFrame;
-            [_middle changeHeight:_monthHeight];
-        } completion:^(BOOL finished) {
+        
+        self.frame = tFrame;
+        [_middle changeHeight:_monthHeight complete:^(BOOL finished) {
+            
         }];
+        
+//        [UIView animateWithDuration:3.0f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//            self.frame = tFrame;
+//            [_middle changeHeight:_monthHeight];
+//        } completion:^(BOOL finished) {
+//        }];
     } else {
         // change to week mode
         CGRect tFrame = self.frame;
         tFrame.size.height = _weekHeight;
         _calendarMode = CalendarMode_Week;
-        [UIView animateWithDuration:3.0f delay:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
-            [_middle changeHeight:_weekHeight];
-        } completion:^(BOOL finished) {
+        
+        [_middle changeHeight:_weekHeight complete:^(BOOL finished) {
             self.frame = tFrame;
         }];
+//        [UIView animateWithDuration:3.0f delay:0.0f options:UIViewAnimationOptionCurveLinear animations:^{
+//            [_middle changeHeight:_weekHeight];
+//        } completion:^(BOOL finished) {
+//            self.frame = tFrame;
+//        }];
     }
 }
 
@@ -239,11 +262,24 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
 
 #pragma mark -- UIScrollViewDelegate
 - (void)_reloadData {
-    NSInteger leftIndex = (_currentIndex - 1 + _maxCount)%_maxCount;
-    NSInteger rightIndex = (_currentIndex + 1)%_maxCount;
-    _left.labelTitle.text = [NSString stringWithFormat:@"%ld", leftIndex];
-    _middle.labelTitle.text = [NSString stringWithFormat:@"%ld", _currentIndex];
-    _right.labelTitle.text = [NSString stringWithFormat:@"%ld", rightIndex];
+//    NSInteger leftIndex = (_currentIndex - 1 + _maxCount)%_maxCount;
+//    NSInteger rightIndex = (_currentIndex + 1)%_maxCount;
+//    _left.labelTitle.text = [NSString stringWithFormat:@"%ld", leftIndex];
+//    _middle.labelTitle.text = [NSString stringWithFormat:@"%ld", _currentIndex];
+//    _right.labelTitle.text = [NSString stringWithFormat:@"%ld", rightIndex];
+    NSInteger leftIndex = _currentIndex - 1;
+    NSInteger middleIndex = _currentIndex;
+    NSInteger rightIndex = _currentIndex + 1;
+    NSDate* leftDate = [[DateManager sharedInstance] dateWithDate:_nowDate monthOffset:leftIndex];
+    [_left reloadDate:leftDate];
+    NSDate* middleDate = [[DateManager sharedInstance] dateWithDate:_nowDate monthOffset:middleIndex];
+    [_middle reloadDate:middleDate];
+    NSDate* rightDate = [[DateManager sharedInstance] dateWithDate:_nowDate monthOffset:rightIndex];
+    [_right reloadDate:rightDate];
+    
+    if (self.delegate) {
+        [self.delegate didCalendarPageChange:middleDate];
+    }
 }
 
 #pragma mark -- UIScrollViewDelegate
@@ -252,10 +288,12 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
     CGFloat width = scrollView.frame.size.width;
     CGFloat ofx = self.scrollView.contentOffset.x;
     if (ofx > width) {
-        _currentIndex = (_currentIndex + 1) % _maxCount;
+//        _currentIndex = (_currentIndex + 1) % _maxCount;
+        _currentIndex++;
         [self _reloadData];
     } else if (ofx < width) {
-        _currentIndex = (_currentIndex - 1 + _maxCount) % _maxCount;
+//        _currentIndex = (_currentIndex - 1 + _maxCount) % _maxCount;
+        _currentIndex--;
         [self _reloadData];
     }
     [self.scrollView setContentOffset:CGPointMake(width, 0) animated:NO];

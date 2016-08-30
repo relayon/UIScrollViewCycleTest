@@ -7,6 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "DateManager.h"
+#import "NSDate+String.h"
 
 @interface UIScrollViewCycleTestTests : XCTestCase
 
@@ -27,6 +29,14 @@
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+    NSDate* dt = [NSDate date];
+    dt = [[DateManager sharedInstance] firstDayOfMonth:dt];
+    dt = [[DateManager sharedInstance] firstDayOfWeek:dt];
+    NSLog(@"tDate====== = %@", [dt hy_stringDefault]);
+    for (int i = 0; i < 6; i++) {
+        NSDate* tDate = [[DateManager sharedInstance] dateWithDate:dt weekOffset:i];
+        NSLog(@"tDate = %@", [tDate hy_stringDefault]);
+    }
 }
 
 - (void)testPerformanceExample {

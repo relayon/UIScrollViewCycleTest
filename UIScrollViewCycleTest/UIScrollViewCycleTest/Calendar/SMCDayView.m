@@ -7,8 +7,21 @@
 //
 
 #import "SMCDayView.h"
+#import "NSDate+String.h"
+#import "DateManager.h"
 
 @implementation SMCDayView
+
+- (void)reloadDate:(NSDate*)date  currentDate:(NSDate*)cDate {
+    self.labelTitle.text = [date hy_stringDay];
+    
+    BOOL isInSameMonth = [[DateManager sharedInstance] isDate:date inSameMonthWithDate:cDate];
+    if (isInSameMonth) {
+        self.labelTitle.textColor = [UIColor blackColor];
+    } else {
+        self.labelTitle.textColor = [UIColor lightGrayColor];
+    }
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

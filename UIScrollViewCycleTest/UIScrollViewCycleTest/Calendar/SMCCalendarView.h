@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SMCCalendarDelegate <NSObject>
+
+@optional
+- (void)didCalendarPageChange:(NSDate*)date;
+
+@end
+
 @interface SMCCalendarView : UIView
+
+@property (weak, nonatomic) id<SMCCalendarDelegate> delegate;
 
 @end

@@ -8,8 +8,10 @@
 
 #import "CalendarViewController.h"
 #import "SMCCalendarView.h"
+#import "HYCalendarHeader.h"
+#import "NSDate+String.h"
 
-@interface CalendarViewController () <UIScrollViewDelegate> {
+@interface CalendarViewController () <UIScrollViewDelegate, SMCCalendarDelegate> {
 }
 
 @end
@@ -24,8 +26,13 @@
     CGFloat dayWidth = width / 7.0f;
     CGFloat height = dayWidth * 6;
     height = ceilf(height);
-    SMCCalendarView* cv = [[SMCCalendarView alloc] initWithFrame:CGRectMake(0, 70, width, height)];
+    SMCCalendarView* cv = [[SMCCalendarView alloc] initWithFrame:CGRectMake(0, 64 + 30, width, height)];
+    cv.delegate = self;
     [self.view addSubview:cv];
+    
+    HYCalendarHeader* calendarHeader = [[HYCalendarHeader alloc] initWithFrame:CGRectMake(0, 64, width, 30)];
+    //    [self.view addSubview:calendarHeader];
+    [self.view addSubview:calendarHeader];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,6 +43,10 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)didCalendarPageChange:(NSDate*)date {
+    self.title = [date hy_stringYearMonth];
 }
 
 @end

@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="97" y="445"/>
         </scene>
-        <!--UIScrollViewTest-->
+        <!--首页-->
         <scene sceneID="ieF-TQ-tex">
             <objects>
                 <tableViewController id="9v1-0e-45E" customClass="MainViewController" sceneMemberID="viewController">
@@ -95,7 +95,7 @@
                             <outlet property="delegate" destination="9v1-0e-45E" id="LXq-QS-OGt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="UIScrollViewTest" id="QpM-hK-xK3"/>
+                    <navigationItem key="navigationItem" title="首页" id="QpM-hK-xK3"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4qm-bR-awt" userLabel="First Responder" sceneMemberID="firstResponder"/>

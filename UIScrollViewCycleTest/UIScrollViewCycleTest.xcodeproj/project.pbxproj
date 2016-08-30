@@ -26,6 +26,13 @@
 		54EB8C061D7522A70007B657 /* UIScrollView+SMCScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8C051D7522A70007B657 /* UIScrollView+SMCScroll.m */; };
 		54EB8C091D7525A00007B657 /* SMCCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8C081D7525A00007B657 /* SMCCalendarView.m */; };
 		54EB8C0B1D7527720007B657 /* SMCCalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54EB8C0A1D7527720007B657 /* SMCCalendarView.xib */; };
+		54EB8C131D7577510007B657 /* HYCalendarHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8C0E1D7577510007B657 /* HYCalendarHeader.m */; };
+		54EB8C141D7577510007B657 /* HYCalendarHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54EB8C0F1D7577510007B657 /* HYCalendarHeader.xib */; };
+		54EB8C151D7577510007B657 /* HYCalendarHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8C111D7577510007B657 /* HYCalendarHeaderCell.m */; };
+		54EB8C161D7577510007B657 /* HYCalendarHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54EB8C121D7577510007B657 /* HYCalendarHeaderCell.xib */; };
+		54EB8C201D7577960007B657 /* NSDate+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8C191D7577960007B657 /* NSDate+String.m */; };
+		54EB8C211D7577960007B657 /* DateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8C1C1D7577960007B657 /* DateManager.m */; };
+		54EB8C221D7577960007B657 /* XingZuoDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB8C1F1D7577960007B657 /* XingZuoDate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +87,19 @@
 		54EB8C071D7525A00007B657 /* SMCCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCCalendarView.h; sourceTree = "<group>"; };
 		54EB8C081D7525A00007B657 /* SMCCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCCalendarView.m; sourceTree = "<group>"; };
 		54EB8C0A1D7527720007B657 /* SMCCalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMCCalendarView.xib; sourceTree = "<group>"; };
+		54EB8C0D1D7577510007B657 /* HYCalendarHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCalendarHeader.h; sourceTree = "<group>"; };
+		54EB8C0E1D7577510007B657 /* HYCalendarHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCalendarHeader.m; sourceTree = "<group>"; };
+		54EB8C0F1D7577510007B657 /* HYCalendarHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCalendarHeader.xib; sourceTree = "<group>"; };
+		54EB8C101D7577510007B657 /* HYCalendarHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCalendarHeaderCell.h; sourceTree = "<group>"; };
+		54EB8C111D7577510007B657 /* HYCalendarHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCalendarHeaderCell.m; sourceTree = "<group>"; };
+		54EB8C121D7577510007B657 /* HYCalendarHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCalendarHeaderCell.xib; sourceTree = "<group>"; };
+		54EB8C181D7577960007B657 /* NSDate+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+String.h"; sourceTree = "<group>"; };
+		54EB8C191D7577960007B657 /* NSDate+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+String.m"; sourceTree = "<group>"; };
+		54EB8C1B1D7577960007B657 /* DateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateManager.h; sourceTree = "<group>"; };
+		54EB8C1C1D7577960007B657 /* DateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateManager.m; sourceTree = "<group>"; };
+		54EB8C1D1D7577960007B657 /* XingZuo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XingZuo.h; sourceTree = "<group>"; };
+		54EB8C1E1D7577960007B657 /* XingZuoDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XingZuoDate.h; sourceTree = "<group>"; };
+		54EB8C1F1D7577960007B657 /* XingZuoDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XingZuoDate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +197,9 @@
 		54EB8BF41D7519660007B657 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				54EB8C171D7577960007B657 /* Category */,
+				54EB8C1A1D7577960007B657 /* Data */,
+				54EB8C0C1D7577480007B657 /* Header */,
 				54EB8BF51D7519BA0007B657 /* SMCMonthView.h */,
 				54EB8BF61D7519BA0007B657 /* SMCMonthView.m */,
 				54EB8BF81D7519D30007B657 /* SMCMonthView.xib */,
@@ -193,6 +216,40 @@
 				54EB8C0A1D7527720007B657 /* SMCCalendarView.xib */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		54EB8C0C1D7577480007B657 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				54EB8C0D1D7577510007B657 /* HYCalendarHeader.h */,
+				54EB8C0E1D7577510007B657 /* HYCalendarHeader.m */,
+				54EB8C0F1D7577510007B657 /* HYCalendarHeader.xib */,
+				54EB8C101D7577510007B657 /* HYCalendarHeaderCell.h */,
+				54EB8C111D7577510007B657 /* HYCalendarHeaderCell.m */,
+				54EB8C121D7577510007B657 /* HYCalendarHeaderCell.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		54EB8C171D7577960007B657 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				54EB8C181D7577960007B657 /* NSDate+String.h */,
+				54EB8C191D7577960007B657 /* NSDate+String.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		54EB8C1A1D7577960007B657 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				54EB8C1B1D7577960007B657 /* DateManager.h */,
+				54EB8C1C1D7577960007B657 /* DateManager.m */,
+				54EB8C1D1D7577960007B657 /* XingZuo.h */,
+				54EB8C1E1D7577960007B657 /* XingZuoDate.h */,
+				54EB8C1F1D7577960007B657 /* XingZuoDate.m */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,10 +356,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				54EB8BCB1D73FB9E0007B657 /* LaunchScreen.storyboard in Resources */,
+				54EB8C141D7577510007B657 /* HYCalendarHeader.xib in Resources */,
 				54EB8C031D751E4B0007B657 /* SMCDayView.xib in Resources */,
 				54EB8BF91D7519D30007B657 /* SMCMonthView.xib in Resources */,
 				54EB8C0B1D7527720007B657 /* SMCCalendarView.xib in Resources */,
 				54EB8BC81D73FB9E0007B657 /* Assets.xcassets in Resources */,
+				54EB8C161D7577510007B657 /* HYCalendarHeaderCell.xib in Resources */,
 				54EB8BC61D73FB9E0007B657 /* Main.storyboard in Resources */,
 				54EB8BFE1D751E010007B657 /* SMCWeekView.xib in Resources */,
 			);
@@ -330,15 +389,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				54EB8BC31D73FB9E0007B657 /* ViewController.m in Sources */,
+				54EB8C151D7577510007B657 /* HYCalendarHeaderCell.m in Sources */,
 				54EB8BFC1D751DF40007B657 /* SMCWeekView.m in Sources */,
 				54EB8BF71D7519BA0007B657 /* SMCMonthView.m in Sources */,
 				54EB8C011D751E400007B657 /* SMCDayView.m in Sources */,
 				54EB8BC01D73FB9E0007B657 /* AppDelegate.m in Sources */,
 				54EB8BBD1D73FB9E0007B657 /* main.m in Sources */,
+				54EB8C131D7577510007B657 /* HYCalendarHeader.m in Sources */,
+				54EB8C221D7577960007B657 /* XingZuoDate.m in Sources */,
 				54EB8C091D7525A00007B657 /* SMCCalendarView.m in Sources */,
+				54EB8C211D7577960007B657 /* DateManager.m in Sources */,
 				54EB8BF31D7517BB0007B657 /* CalendarViewController.m in Sources */,
 				54EB8C061D7522A70007B657 /* UIScrollView+SMCScroll.m in Sources */,
 				54EB8BF01D7516E10007B657 /* MainViewController.m in Sources */,
+				54EB8C201D7577960007B657 /* NSDate+String.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,10 @@
 
 - (void)initWeeks;
 
-- (void)changeHeight:(CGFloat)height;
+- (void)changeHeight:(CGFloat)height complete:(void (^)(BOOL finished))cb;
+//- (void)changeMode:(CalendarMode)mode complete:(void (^)(BOOL finished))cb;
+- (void)rawChangeHeight:(CGFloat)height;
+
+- (void)reloadDate:(NSDate*)date;
 
 @end
