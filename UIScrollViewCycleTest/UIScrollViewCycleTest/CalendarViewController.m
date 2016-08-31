@@ -16,6 +16,7 @@
     CGFloat _weekHeight;
     CGFloat _insetTop;
     SMCCalendarView* _calendarView;
+    CGFloat _scrollVelocity;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -49,6 +50,8 @@
     insets.top = _insetTop;
     self.tableView.contentInset = insets;
     self.tableView.backgroundColor = [UIColor darkGrayColor];
+//    self.tableView.decelerationRate = 0.0f;
+    NSLog(@"self.tableView.decelerationRate = %f", self.tableView.decelerationRate);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,14 +77,25 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return 50;
+}
+
+- (CGFloat)_getInsetTop {
+    CGFloat top = 0.0f;
+    if (_calendarView.calendarMode == CalendarMode_Month) {
+        top = _calendarHeight + 30;
+    } else if (_calendarView.calendarMode == CalendarMode_Week) {
+        top = _weekHeight + 30;
+    }
+    return top;
 }
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat ofy = scrollView.contentOffset.y;
-    CGFloat delta = -(_insetTop + ofy);
-    NSLog(@"ofy = %f, delta = %f", ofy, delta);
+    CGFloat tTop = [self _getInsetTop];
+    CGFloat delta = -(tTop + ofy);
+//    NSLog(@"ofy = %f, delta = %f", ofy, delta);
     [_calendarView changeCalendarHeight:delta];
     
     
@@ -96,22 +110,62 @@
     
 }
 
-#pragma mark -- SMCCalendarDelegate
-- (void)didCalendarPageChange:(NSDate*)date {
-    self.title = [date hy_stringYearMonth];
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [_calendarView changeCalendarHeightBegin];
 }
 
-- (void)didCalendarHeightChange:(CGFloat)height {
-    CGFloat minOfy = -(height + 30);
-    NSLog(@"minOfy = %f", minOfy);
-//    CGFloat ofy = self.tableView.contentOffset.y;
-    CGPoint offset = self.tableView.contentOffset;
-    offset.y = minOfy;
-    id scrollDelegate = self.tableView.delegate;
-    self.tableView.delegate = nil;
-    [self.tableView setContentOffset:offset animated:NO];
-    self.tableView.delegate = scrollDelegate;
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    NSLog(@"%s - %@", __FUNCTION__, decelerate?@"YES":@"NO");
+    UIPanGestureRecognizer* panGesture = scrollView.panGestureRecognizer;
+    CGFloat velocity = [panGesture velocityInView:panGesture.view].y;
+    NSLog(@"scrollViewDidEndDragging - velocity = %f, decelerate = %f", velocity, scrollView.decelerationRate);
+    _scrollVelocity = velocity;
+    if (!decelerate) {
+        [_calendarView changeCalendarHeightEnd:_scrollVelocity];
+    }
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    NSLog(@"%s", __FUNCTION__);
+//    [scrollView setContentOffset:scrollView.contentOffset animated:NO];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSLog(@"%s", __FUNCTION__);
+    [_calendarView changeCalendarHeightEnd:_scrollVelocity];
+}
+
+#pragma mark -- SMCCalendarDelegate
+//- (void)didCalendarPageChange:(NSDate*)date {
+//    self.title = [date hy_stringYearMonth];
+//}
+//
+//- (void)didCalendarHeightChange:(CGFloat)height {
+//    CGFloat minOfy = -(height + 30);
+//    NSLog(@"minOfy = %f", minOfy);
+////    CGFloat ofy = self.tableView.contentOffset.y;
+//    CGPoint offset = self.tableView.contentOffset;
+//    offset.y = minOfy;
+//    id scrollDelegate = self.tableView.delegate;
+//    self.tableView.delegate = nil;
+//    [self.tableView setContentOffset:offset animated:NO];
+//    self.tableView.delegate = scrollDelegate;
+//    
+//}
+- (void)calendarWillChangeHeight:(CGFloat)delta animated:(BOOL)animate {
+    CGPoint contentOffset = self.tableView.contentOffset;
+    contentOffset.y -= delta;
     
+    if (animate) {
+        [UIView animateWithDuration:1.0 animations:^{
+            self.tableView.contentOffset = contentOffset;
+        }];
+    } else {
+        self.tableView.contentOffset = contentOffset;
+    }
+}
+
+- (void)calendarDidChangeMode:(CalendarMode)mode {
 }
 
 @end

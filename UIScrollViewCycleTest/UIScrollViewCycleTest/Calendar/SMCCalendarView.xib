@@ -15,7 +15,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="452" height="241"/>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.69411764710000001" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="RFz-np-aaU" secondAttribute="trailing" id="3EV-3B-aTR"/>
                 <constraint firstAttribute="bottom" secondItem="RFz-np-aaU" secondAttribute="bottom" id="6db-yQ-GAd"/>

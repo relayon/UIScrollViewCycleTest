@@ -104,8 +104,8 @@
         if (wv.tag != _anchorIndex) {
             CGRect tFrame = wv.frame;
             CGFloat py = _nowHeight - (nc - wv.tag)*weekHeight;
-            CGFloat delta = tFrame.origin.y - py;
-            NSLog(@"delta ===== %f", delta);
+//            CGFloat delta = tFrame.origin.y - py;
+//            NSLog(@"delta ===== %f", delta);
             tFrame.origin.y = py;
             wv.frame = tFrame;
         }
