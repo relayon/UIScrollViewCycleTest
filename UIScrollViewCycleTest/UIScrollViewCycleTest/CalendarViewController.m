@@ -17,6 +17,8 @@
     CGFloat _insetTop;
     SMCCalendarView* _calendarView;
     CGFloat _scrollVelocity;
+    
+    CGFloat _beginOffsetY;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -135,33 +137,41 @@
     [_calendarView changeCalendarHeightEnd:_scrollVelocity];
 }
 
+- (void)_smcSetContentOffset:(CGPoint)offset {
+    self.tableView.delegate = nil;
+//    self.tableView.contentOffset = offset;
+    [self.tableView setContentOffset:offset animated:NO];
+    self.tableView.delegate = self;
+}
+
 #pragma mark -- SMCCalendarDelegate
-//- (void)didCalendarPageChange:(NSDate*)date {
-//    self.title = [date hy_stringYearMonth];
-//}
-//
-//- (void)didCalendarHeightChange:(CGFloat)height {
-//    CGFloat minOfy = -(height + 30);
-//    NSLog(@"minOfy = %f", minOfy);
-////    CGFloat ofy = self.tableView.contentOffset.y;
-//    CGPoint offset = self.tableView.contentOffset;
-//    offset.y = minOfy;
-//    id scrollDelegate = self.tableView.delegate;
-//    self.tableView.delegate = nil;
-//    [self.tableView setContentOffset:offset animated:NO];
-//    self.tableView.delegate = scrollDelegate;
-//    
-//}
+- (void)calendarChangeHeightBegin {
+    NSLog(@"%s", __FUNCTION__);
+    CGPoint contentOffset = self.tableView.contentOffset;
+    [self _smcSetContentOffset:contentOffset];
+//    [self.tableView setContentOffset:contentOffset animated:NO];
+    _beginOffsetY = contentOffset.y;
+}
+
+- (void)calendarChangeHeight:(CGFloat)delta {
+    CGPoint contentOffset = self.tableView.contentOffset;
+    CGFloat ty = _beginOffsetY - delta;
+    ty = MAX(ty, -_insetTop);
+    contentOffset.y = ty;
+//    self.tableView.contentOffset = contentOffset;
+    [self _smcSetContentOffset:contentOffset];
+}
+
 - (void)calendarWillChangeHeight:(CGFloat)delta animated:(BOOL)animate {
     CGPoint contentOffset = self.tableView.contentOffset;
     contentOffset.y -= delta;
     
     if (animate) {
         [UIView animateWithDuration:1.0 animations:^{
-            self.tableView.contentOffset = contentOffset;
+            [self _smcSetContentOffset:contentOffset];
         }];
     } else {
-        self.tableView.contentOffset = contentOffset;
+        [self _smcSetContentOffset:contentOffset];
     }
 }
 

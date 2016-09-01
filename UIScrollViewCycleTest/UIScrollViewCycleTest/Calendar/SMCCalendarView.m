@@ -160,62 +160,93 @@
 
 - (void)panDidBegan:(UIPanGestureRecognizer*)panGesture {
     NSLog(@"%s", __FUNCTION__);
+    [self changeCalendarHeightBegin];
+    
+    if (self.delegate) {
+        [self.delegate calendarChangeHeightBegin];
+    }
 }
 
 - (void)panDidChange:(UIPanGestureRecognizer*)panGesture {
     NSLog(@"%s", __FUNCTION__);
-    CGFloat translation = [panGesture translationInView:panGesture.view].y;
-    CGFloat velocity = [panGesture velocityInView:panGesture.view].y;
-    // 向上拖动，translation是负数，向下是正数
-    // velocity 是负数，方向向上，正数，方向向下
-    NSLog(@"{%f, %f}", translation, velocity);
-    
-    CGFloat delta = 0.0f;
-    if (self.calendarMode == CalendarMode_Month) {
-        delta = -translation;
-        delta = MAX(delta, 0.0f); // 最小
-        delta = MIN(delta, _monthHeight - _weekHeight);   // 最大
-        CGFloat tHeight = _monthHeight - delta;
-        CGRect tFrame = self.frame;
-        tFrame.size.height = tHeight;
-        self.frame = tFrame;
-    } else {
-        delta = translation;
-        delta = MAX(delta, 0.0f); // 最小
-        delta = MIN(delta, _monthHeight - _weekHeight);   // 最大
-        CGFloat tHeight = _weekHeight + delta;
-        CGRect tFrame = self.frame;
-        tFrame.size.height = tHeight;
-        self.frame = tFrame;
-    }
-    
-    [self _changeMonthViewHeight:self.frame.size.height];
-//    if (self.delegate) {
-//        [self.delegate didCalendarHeightChange:self.frame.size.height];
+//    BOOL pass = NO;
+//    CGFloat velocity = [panGesture velocityInView:panGesture.view].y;
+//    if (_calendarMode == CalendarMode_Month) {
+//        if (velocity > 0) {
+//            // 向下
+//            if (_nowHeight > _weekHeight && _nowHeight < _monthHeight) {
+//                pass = YES;
+//            }
+//        } else {
+//            // 向上
+//            if (_nowHeight > _weekHeight && _nowHeight < _monthHeight) {
+//                pass = YES;
+//            }
+//        }
+//    } else if (_calendarMode == CalendarMode_Week) {
+//        if (velocity > 0) {
+//            // 向下
+//            if (_nowHeight > _weekHeight && _nowHeight < _monthHeight) {
+//                pass = YES;
+//            }
+//        } else {
+//            // 向上
+//            if (_nowHeight > _weekHeight && _nowHeight < _monthHeight) {
+//                pass = YES;
+//            }
+//        }
 //    }
     
-//    CGFloat delta = -translation;
-//    delta = MAX(delta, 0.0f);   // 最小
-//    delta = MIN(delta, self.mMonthCalendarHeight - self.mWeekCalendarHeight);   // 最大
-//    CGRect tFrame = self.collectionView.frame;
-//    tFrame.origin.y = _originY - delta;
-//    self.collectionView.frame = tFrame;
+    CGFloat translation = [panGesture translationInView:panGesture.view].y;
+    CGFloat delta = translation;
+    [self changeCalendarHeight:delta];
+    if (self.delegate) {
+        [self.delegate calendarChangeHeight:delta];
+    }
+    
+//    NSLog(@"MD:%ld, velocity = %f, _nowHeight = %f", _calendarMode, velocity, _nowHeight);
+//    if (_nowHeight >= _weekHeight && _nowHeight <= _monthHeight) {
+//        CGFloat translation = [panGesture translationInView:panGesture.view].y;
+//        CGFloat delta = translation;
+//        [self changeCalendarHeight:delta];
+//        if (self.delegate) {
+//            [self.delegate calendarChangeHeight:delta];
+//        }
+//    }
+    
+//    CGFloat velocity = [panGesture velocityInView:panGesture.view].y;
+//    // 向上拖动，translation是负数，向下是正数
+//    // velocity 是负数，方向向上，正数，方向向下
+//    NSLog(@"{%f, %f}", translation, velocity);
 //    
-//    // change container frame;
-//    CGRect containerFrame = self.mCalendarContainer.frame;
-//    containerFrame.size.height = self.mContainerHeight - delta;
-//    self.mCalendarContainer.frame = containerFrame;
+//    CGFloat delta = 0.0f;
+//    if (self.calendarMode == CalendarMode_Month) {
+//        delta = -translation;
+//        delta = MAX(delta, 0.0f); // 最小
+//        delta = MIN(delta, _monthHeight - _weekHeight);   // 最大
+//        CGFloat tHeight = _monthHeight - delta;
+//        CGRect tFrame = self.frame;
+//        tFrame.size.height = tHeight;
+//        self.frame = tFrame;
+//    } else {
+//        delta = translation;
+//        delta = MAX(delta, 0.0f); // 最小
+//        delta = MIN(delta, _monthHeight - _weekHeight);   // 最大
+//        CGFloat tHeight = _weekHeight + delta;
+//        CGRect tFrame = self.frame;
+//        tFrame.size.height = tHeight;
+//        self.frame = tFrame;
+//    }
 //    
-//    // set tableview content offset
-//    CGPoint offset = self.tableView.contentOffset;
-//    offset.y = -self.mMonthCalendarHeight + delta;
-//    self.tableView.contentOffset = offset;
+//    [self _changeMonthViewHeight:self.frame.size.height];
 }
 
 - (void)panDidEnd:(UIPanGestureRecognizer*)panGesture {
     NSLog(@"%s", __FUNCTION__);
-    CGFloat translation = [panGesture translationInView:panGesture.view].y;
+//    CGFloat translation = [panGesture translationInView:panGesture.view].y;
     CGFloat velocity = [panGesture velocityInView:panGesture.view].y;
+    [self changeCalendarHeightEnd:velocity];
+#if 0
     // 向上拖动，translation是负数，向下是正数
     // velocity 是负数，方向向上，正数，方向向下
     NSLog(@"{%f, %f}", translation, velocity);
@@ -250,6 +281,7 @@
 //            self.frame = tFrame;
 //        }];
     }
+#endif
 }
 
 #pragma mark -- 外部调用，改变日历高度

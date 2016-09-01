@@ -16,6 +16,9 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
 @protocol SMCCalendarDelegate <NSObject>
 
 @optional
+- (void)calendarChangeHeightBegin;
+- (void)calendarChangeHeight:(CGFloat)delta;
+
 - (void)calendarWillChangeHeight:(CGFloat)delta animated:(BOOL)animate;
 - (void)calendarDidChangeMode:(CalendarMode)mode;
 //- (void)didCalendarPageChange:(NSDate*)date;
@@ -34,6 +37,7 @@ typedef NS_ENUM(NSInteger, CalendarMode) {
  *
  *  @param delta，根据UIScrollView的ContentOffset定义，
     向上滚动，delta < 0, Height变小
+    @return 返回实际改变的高度
  */
 - (void)changeCalendarHeight:(CGFloat)delta;
 - (void)changeCalendarHeightEnd:(CGFloat)velocity;
